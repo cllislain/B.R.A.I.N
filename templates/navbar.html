@@ -3,7 +3,7 @@
 <header class="header header--loggedIn">
     <div class="container">
       <a href="{% url 'home' %}" class="header__logo">
-        <img src="{% static 'images/logo.jpeg' %}" />
+        <img src="{% static 'images/logo.png' %}" />
         <h1>B.R.A.I.N</h1>
       </a>
       <form method="GET" action="{% url 'home' %}" class="header__search">
@@ -21,7 +21,7 @@
 
     {% if request.user.is_authenticated %}
         <div class="header__user">
-          <a href="profile.html">
+          <a href="{% url 'profile' user.id %}">
             <div class="avatar avatar--medium active">
               <img src="https://randomuser.me/api/portraits/men/37.jpg" />
             </div>
@@ -44,7 +44,7 @@
 
     {% endif %}
         <div class="dropdown-menu">
-          <a href="settings.html" class="dropdown-link"
+          <a href="{% url 'edit-user' %}" class="dropdown-link"
             ><svg version="1.1" xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 32 32">
               <title>tools</title>
               <path
@@ -68,15 +68,3 @@
       </nav>
     </div>
   </header>
-
-
-<!-- <div> 
-    {% if request.user.is_authenticated %}
-        <p>Hello @{{request.user}}.</p>
-        <a href="{% url 'logout' %}">Logout</a>
-    {% else %}
-        <a href="{% url 'login' %}">Login</a>
-    {% endif %}
-
-
-</div> -->
